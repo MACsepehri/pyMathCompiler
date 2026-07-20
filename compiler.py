@@ -161,18 +161,27 @@ class Compiler:
                             print(self.available_functions[funcs](self.convert_to_number(func_entry)))
 
     def print_value(self):
-        printit = True
+        self.value_to_print = []
+        self.printed = []
         for content in self.list_content:
             if content.startswith("print("):
                 entry_value = content.replace(")", "").split("print(")
                 entry_value = self.string(entry_value)
                 for key in self.available_vars:
-                    if key == entry_value:
-                        print(self.available_vars[key])
-                        printit = False
-                if printit:
-                    print(entry_value)
-
+                    try:
+                        if self.var[entry_value]:
+                            for data in self.var:
+                                if data == self.var[entry_value]:
+                                    continue
+                            self.value_to_print.append(self.var[entry_value])
+                        if key == entry_value:
+                            self.value_to_print.append(self.available_vars[key])
+                    except:
+                        self.value_to_print.append(entry_value)
+        for m in self.value_to_print:
+            if m not in self.printed:
+                print(m)
+                self.printed.append(m)
     def convert_to_number(self, value):
         try:
             if "." in value:
@@ -202,8 +211,8 @@ class Compiler:
     def compile(self):
         self.read_var()
         self.read_defined_func()
-        self.print_value()
         self.read_var_value_as_function()
+        self.print_value()
 
 compiler = Compiler("test.math")
 compiler.compile()

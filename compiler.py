@@ -29,7 +29,7 @@ class Compiler:
         "truncation": math.trunc,
         "rounding": round,
         "integer_square_root": math.isqrt,
-        "bBinomial_coefficient": math.comb,
+        "binomial_coefficient": math.comb,
         "permutations": math.perm,
         "degreeXradian": math.radians,
         "radianXdegree": math.degrees,

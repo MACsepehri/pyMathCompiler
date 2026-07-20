@@ -15,7 +15,10 @@ class Compiler:
         # main
         self.var = {}
         self.available_vars = {
-            "pi": math.pi
+            "pi": math.pi,
+            "euler_number": math.e,
+            "tau": math.tau,
+            "infinity": math.inf
         }
         self.available_functions = {
             "math": numexpr.evaluate,

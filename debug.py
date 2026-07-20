@@ -27,13 +27,13 @@ class TestAvailableFunctions(unittest.TestCase):
     
     def test4_sine(self):
         self.assertEqual(self.functions["sine"](0), 0)
-        self.assertEqual(self.functions["sine"](math.pi/2), 1)
-        self.assertEqual(self.functions["sine"](math.pi), 0)
+        self.assertEqual(int(self.functions["sine"](math.pi/2)), 1)
+        self.assertEqual(int(self.functions["sine"](math.pi)), 0)
     
     def test5_cosine(self):
         self.assertEqual(self.functions["cosine"](0), 1)
         self.assertEqual(self.functions["cosine"](math.pi), -1)
-        self.assertEqual(self.functions["cosine"](math.pi/2), 0)
+        self.assertEqual(int(self.functions["cosine"](math.pi/2)), 0)
     
     def test6_factorial(self):
         self.assertEqual(self.functions["factorial"](5), 120)

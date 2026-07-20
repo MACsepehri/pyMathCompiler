@@ -5,6 +5,7 @@ import numpy
 
 class Compiler:
     var = {}
+    func = {}
     available_vars = {
         "pi": math.pi,
         "euler_number": math.e,
@@ -182,6 +183,31 @@ class Compiler:
             if m not in self.printed:
                 print(m)
                 self.printed.append(m)
+
+    def create_function(self):
+        i = 0
+        while i < len(self.list_content):
+            content = self.list_content[i]
+            if content.startswith("func"):
+                func_name = content.replace("func", "").replace(" ", "").split("(")[0]
+                func_content = []
+                
+                i += 1
+                
+                while i < len(self.list_content):
+                    line = self.list_content[i]
+                    if line.strip() == "%":
+                        i += 1
+                        break
+                    else:
+                        func_content.append(line)
+                        i += 1
+                
+                self.func[func_name] = str("\n".join(func_content))
+            else:
+                i += 1
+
+
     def convert_to_number(self, value):
         try:
             if "." in value:
@@ -212,7 +238,9 @@ class Compiler:
         self.read_var()
         self.read_defined_func()
         self.read_var_value_as_function()
+        self.create_function()
         self.print_value()
+        print(self.func)
 
 compiler = Compiler("test.math")
 compiler.compile()

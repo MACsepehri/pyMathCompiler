@@ -1,6 +1,7 @@
 import numexpr
 import math
 import statistics
+import numpy
 
 class Compiler:
     var = {}
@@ -44,7 +45,15 @@ class Compiler:
         "sample_variance": statistics.variance,
         "population_variance": statistics.pvariance,
         "pearson_correlation_coefficient": statistics.correlation,
-        "Linear regression": statistics.linear_regression
+        "Linear regression": statistics.linear_regression,
+        "matrix_multiplication": numpy.dot,
+        "matrix_determinant": numpy.linalg.det,
+        "matrix_inverse": numpy.linalg.inv,
+        "Eigenvalues_and_eigenvectors": numpy.linalg.eig,
+        "singular_value_decomposition": numpy.linalg.svd,
+        "qr_decomposition": numpy.linalg.qr,
+        "cholesky_decomposition": numpy.linalg.cholesky,
+        "fast_fourier_transform": numpy.fft.fft
     }
     
     def __init__(self, file):

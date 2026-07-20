@@ -90,7 +90,6 @@ class Compiler:
                 self.var[key] = value
 
     def read_var_value_as_function(self):
-        printit = True
         for content in self.list_content:
             if content.startswith("var"):
                 value = str(content.split("=")[1])

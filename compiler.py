@@ -3,6 +3,50 @@ import math
 import statistics
 
 class Compiler:
+    var = {}
+    available_vars = {
+        "pi": math.pi,
+        "euler_number": math.e,
+        "tau": math.tau,
+        "infinity": math.inf
+    }
+    available_functions = {
+        "math": numexpr.evaluate,
+        "greatest_common_divisor": math.gcd,
+        "square_root": math.sqrt,
+        "sine": math.sin,
+        "cosine": math.cos,
+        "factorial": math.factorial,
+        "tangent": math.tan,
+        "logarithm": math.log,
+        "natural_log": math.log,
+        "log_base_2": math.log2,
+        "log_base_10": math.log10,
+        "exponential": math.exp,
+        "power": math.pow,
+        "ceiling": math.ceil,
+        "floor": math.floor,
+        "truncation": math.trunc,
+        "rounding": round,
+        "integer_square_root": math.isqrt,
+        "bBinomial_coefficient": math.comb,
+        "permutations": math.perm,
+        "degreeXradian": math.radians,
+        "radianXdegree": math.degrees,
+        "least_common_multiple": math.lcm,
+        "hypotenuse": math.hypot,
+        "arctangent": math.atan2,
+        "average": statistics.mean,
+        "middle": statistics.median,
+        "mode": statistics.mode,
+        "sample_standard_deviation": statistics.stdev,
+        "population_standard_deviation": statistics.pstdev,
+        "sample_variance": statistics.variance,
+        "population_variance": statistics.pvariance,
+        "pearson_correlation_coefficient": statistics.correlation,
+        "Linear regression": statistics.linear_regression
+    }
+    
     def __init__(self, file):
         self.file = file
         self.list_content = open(file, "r").readlines()
@@ -11,51 +55,6 @@ class Compiler:
             self.content.append(content.replace("\n", ""))
         self.list_content = self.content
         del self.content
-
-        # main
-        self.var = {}
-        self.available_vars = {
-            "pi": math.pi,
-            "euler_number": math.e,
-            "tau": math.tau,
-            "infinity": math.inf
-        }
-        self.available_functions = {
-            "math": numexpr.evaluate,
-            "greatest_common_divisor": math.gcd,
-            "square_root": math.sqrt,
-            "sine": math.sin,
-            "cosine": math.cos,
-            "factorial": math.factorial,
-            "tangent": math.tan,
-            "logarithm": math.log,
-            "natural_log": math.log,
-            "log_base_2": math.log2,
-            "log_base_10": math.log10,
-            "exponential": math.exp,
-            "power": math.pow,
-            "ceiling": math.ceil,
-            "floor": math.floor,
-            "truncation": math.trunc,
-            "rounding": round,
-            "integer_square_root": math.isqrt,
-            "bBinomial_coefficient": math.comb,
-            "permutations": math.perm,
-            "degreeXradian": math.radians,
-            "radianXdegree": math.degrees,
-            "least_common_multiple": math.lcm,
-            "hypotenuse": math.hypot,
-            "arctangent": math.atan2,
-            "average": statistics.mean,
-            "middle": statistics.median,
-            "mode": statistics.mode,
-            "sample_standard_deviation": statistics.stdev,
-            "population_standard_deviation": statistics.pstdev,
-            "sample_variance": statistics.variance,
-            "population_variance": statistics.pvariance,
-            "pearson_correlation_coefficient": statistics.correlation,
-            "Linear regression": statistics.linear_regression
-        }
 
     def read_var(self):
         for content in self.list_content:

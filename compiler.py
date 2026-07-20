@@ -90,6 +90,7 @@ class Compiler:
                 self.var[key] = value
 
     def read_var_value_as_function(self):
+        printit = True
         for content in self.list_content:
             if content.startswith("var"):
                 value = str(content.split("=")[1])
@@ -100,9 +101,28 @@ class Compiler:
                     value += val
                 value = self.string(value)
                 key = content.replace("var", "").replace(" ", "").replace(value, "").split("=")[0]
+                func_entry = value.split("(")[1].replace(")", "").replace(" ", "").split(",")
                 for func in self.available_functions:
                     if func == value.split("(")[0].replace("(", ""):
-                        self.var[key] = self.available_functions[key]()
+                        if len(func_entry) <= 3:
+                            if len(func_entry) == 1:
+                                if func_entry[0].isdigit():
+                                    func_entry[0] = self.convert_to_number(func_entry[0])
+                                self.var[key] = str(self.available_functions[func](func_entry[0]))
+                            elif len(func_entry) == 2:
+                                if func_entry[0].isdigit():
+                                    func_entry[0] = self.convert_to_number(func_entry[0])
+                                if func_entry[1].isdigit():
+                                    func_entry[1] = self.convert_to_number(func_entry[1])
+                                self.var[key] = str(self.available_functions[func](func_entry[0], func_entry[1]))
+                            elif len(func_entry) == 3:
+                                if func_entry[0].isdigit():
+                                    func_entry[0] = self.convert_to_number(func_entry[0])
+                                if func_entry[1].isdigit():
+                                    func_entry[1] = self.convert_to_number(func_entry[1])
+                                if func_entry[2].isdigit():
+                                    func_entry[2] = self.convert_to_number(func_entry[2])
+                                self.var[key] = str(self.available_functions[func](func_entry[0], func_entry[1], func_entry[2]))
 
     def read_defined_func(self):
         printit = True

@@ -45,7 +45,16 @@ class Compiler:
             "radianXdegree": math.degrees,
             "least_common_multiple": math.lcm,
             "hypotenuse": math.hypot,
-            "arctangent": math.atan2
+            "arctangent": math.atan2,
+            "average": statistics.mean,
+            "middle": statistics.median,
+            "mode": statistics.mode,
+            "sample_standard_deviation": statistics.stdev,
+            "population_standard_deviation": statistics.pstdev,
+            "sample_variance": statistics.variance,
+            "population_variance": statistics.pvariance,
+            "pearson_correlation_coefficient": statistics.correlation,
+            "Linear regression": statistics.linear_regression
         }
 
     def read_var(self):

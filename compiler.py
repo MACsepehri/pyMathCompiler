@@ -89,6 +89,21 @@ class Compiler:
                     value = value
                 self.var[key] = value
 
+    def read_var_value_as_function(self):
+        for content in self.list_content:
+            if content.startswith("var"):
+                value = str(content.split("=")[1])
+                list_value = [val for val in value]
+                list_value.pop(0)
+                value = ""
+                for val in list_value:
+                    value += val
+                value = self.string(value)
+                key = content.replace("var", "").replace(" ", "").replace(value, "").split("=")[0]
+                for func in self.available_functions:
+                    if func == value.split("(")[0].replace("(", ""):
+                        self.var[key] = self.available_functions[key]()
+
     def read_defined_func(self):
         printit = True
         for content in self.list_content:
@@ -169,6 +184,7 @@ class Compiler:
         self.read_var()
         self.read_defined_func()
         self.print_value()
+        self.read_var_value_as_function()
 
 compiler = Compiler("test.math")
 compiler.compile()

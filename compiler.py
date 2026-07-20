@@ -24,7 +24,25 @@ class Compiler:
             "sine": math.sin,
             "cosine": math.cos,
             "factorial": math.factorial,
-            "tangent": math.tan
+            "tangent": math.tan,
+            "logarithm": math.log,
+            "natural_log": math.log,
+            "log_base_2": math.log2,
+            "log_base_10": math.log10,
+            "exponential": math.exp,
+            "power": math.pow,
+            "ceiling": math.ceil,
+            "floor": math.floor,
+            "truncation": math.trunc,
+            "rounding": round,
+            "integer_square_root": math.isqrt,
+            "bBinomial_coefficient": math.comb,
+            "permutations": math.perm,
+            "degreeXradian": math.radians,
+            "radianXdegree": math.degrees,
+            "least_common_multiple": math.lcm,
+            "hypotenuse": math.hypot,
+            "arctangent": math.atan2
         }
 
     def read_var(self):

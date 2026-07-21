@@ -5,7 +5,6 @@ import numpy
 
 class Compiler:
     var = {}
-    func = {}
     available_vars = {
         "pi": math.pi,
         "euler_number": math.e,
@@ -90,7 +89,7 @@ class Compiler:
                     value = value
                 self.var[key] = value
 
-    def read_var_value_as_function(self):
+    def read_var_value_as_function(self):# نتیجه ی توابع رو در متغیر ذخیره میکنه
         for content in self.list_content:
             if content.startswith("var"):
                 value = str(content.split("=")[1])
@@ -161,6 +160,9 @@ class Compiler:
                         if printit:
                             print(self.available_functions[funcs](self.convert_to_number(func_entry)))
 
+    def create_function(self):
+        pass
+
     def print_value(self):
         self.value_to_print = []
         self.printed = []
@@ -215,7 +217,6 @@ class Compiler:
         self.read_defined_func()
         self.read_var_value_as_function()
         self.print_value()
-        print(self.func)
 
 compiler = Compiler("test.math")
 compiler.compile()

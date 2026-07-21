@@ -209,6 +209,9 @@ class Compiler:
             else:
                 i += 1
 
+    def read_user_created_function(self):
+        pass
+
     def convert_to_number(self, value):
         try:
             if "." in value:

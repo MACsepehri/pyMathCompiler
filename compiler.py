@@ -214,8 +214,6 @@ class Compiler:
         self.read_var()
         self.read_defined_func()
         self.read_var_value_as_function()
-        self.create_function()
-        self.read_user_created_function()
         self.print_value()
         print(self.func)
 

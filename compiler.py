@@ -184,35 +184,6 @@ class Compiler:
                 print(m)
                 self.printed.append(m)
 
-    def create_function(self):
-        i = 0
-        while i < len(self.list_content):
-            content = self.list_content[i]
-            if content.startswith("func"):
-                func_name = content.replace("func", "").replace(" ", "").split("(")[0]
-                func_content = []
-                
-                i += 1
-                
-                while i < len(self.list_content):
-                    line = self.list_content[i]
-                    if line.strip() == "%":
-                        i += 1
-                        break
-                    else:
-                        func_content.append(line)
-                        i += 1
-            
-                con = "\n".join(func_content)
-                con = con.split("\n")
-                self.func[func_name] = "\n".join(func_content)
-            else:
-                i += 1
-
-    def read_user_created_function(self):
-        for content in self.list_content:
-            print(content.split("(")[0])
-
     def convert_to_number(self, value):
         try:
             if "." in value:

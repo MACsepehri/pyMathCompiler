@@ -210,7 +210,8 @@ class Compiler:
                 i += 1
 
     def read_user_created_function(self):
-        pass
+        for content in self.list_content:
+            print(content.split("(")[0])
 
     def convert_to_number(self, value):
         try:
@@ -243,6 +244,7 @@ class Compiler:
         self.read_defined_func()
         self.read_var_value_as_function()
         self.create_function()
+        self.read_user_created_function()
         self.print_value()
         print(self.func)
 

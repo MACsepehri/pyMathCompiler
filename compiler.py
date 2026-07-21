@@ -202,11 +202,12 @@ class Compiler:
                     else:
                         func_content.append(line)
                         i += 1
-                
-                self.func[func_name] = str("\n".join(func_content))
+            
+                con = "\n".join(func_content)
+                con = con.split("\n")
+                self.func[func_name] = "\n".join(func_content)
             else:
                 i += 1
-
 
     def convert_to_number(self, value):
         try:

@@ -1,0 +1,9 @@
+create variables :
+var data = "hello world"
+
+call functions :
+callfunc power(val_1, val_2)
+
+insert func result in variables:
+var data = power(val_1, val_2)
+print(data)
